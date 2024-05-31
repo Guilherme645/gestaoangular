@@ -1,0 +1,219 @@
+<div class="grid">
+  <div class="col-12">
+    <p-card
+      styleClass="shadow-3 m-5 text-indigo-800"
+      header="Projetos"
+    >
+      <p-table
+        #projectsTable
+        [value]="projects"
+        [rows]="10"
+        [paginator]="true"
+        [responsive]="true"
+        [globalFilterFields]="['nomeProjeto', 'tecnico']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        [(selection)]="projectSelected"
+        [rowHover]="true"
+        [showCurrentPageReport]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} projetos"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="nomeProjeto">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Nome do Projeto
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="nomeProjeto"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="nomeProjeto"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="tecnico">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Técnico
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="tecnico"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="tecnico"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="cliente">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Cliente
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="cliente"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="cliente"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="dataAbertura">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Data de Abertura
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="dataAbertura"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="dataAbertura"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+
+            </th>
+            <th pSortableColumn="cliente">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Data de Fechamento
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field=" dataFechamento"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field=" dataFechamento"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="dataPrevista">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Data Prevista
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="dataPrevista"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="dataPrevista"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="status">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Status
+                                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="status"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="status"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th>
+              <div class="flex justify-content-center">
+                <p-button
+                  styleClass="p-button-info"
+                  icon="pi pi-plus"
+                  label="Adicionar"
+                  pTooltip="Adicionar projeto"
+                  tooltipPosition="top"
+                  (onClick)="handleProjectEvent(addProjectEvent)"
+                ></p-button>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-project>
+          <tr>
+            <td>{{ project?.nomeProjeto }}</td>
+            <td>{{ project?.tecnico }}</td>
+            <td>{{ project?.cliente }}</td>
+            <td>{{ project?.dataAbertura }}</td>
+            <td>{{ project?.dataFechamento }}</td>
+            <td>{{ project?.dataPrevista }}</td>
+            <td [pTooltip]="project?.cliente" tooltipPosition="top">
+              {{ project?.description }}
+            </td>
+            <td>{{ project?. status?.status}}</td>
+            <td>
+              <div
+                class="flex justify-content-center gap-3 align-content-center align-items-center"
+              >
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-warning"
+                  pTooltip="Editar projeto"
+                  tooltipPosition="top"
+                  (onClick)="handleProjectEvent(editProjectEvent, project?.id)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger"
+                  pTooltip="Remover editar projeto"
+                  tooltipPosition="top"
+                  (click)="handleDeleteProject(project?.id, project?.nome)"
+                ></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>

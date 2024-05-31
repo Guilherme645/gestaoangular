@@ -1,0 +1,70 @@
+<div *ngIf="projectAction?.event?.action === addProjectAction">
+  <form [formGroup]="addProjectForm" (ngSubmit)="handleSubmitAddProject()">
+  <div class="card flex flex-column md:flex-column gap-3">
+    <!-- nome do projeto -->
+    <input pInputText placeholder="Nome do projeto" formControlName="nomeProjeto" />
+    <!-- categoria do projeto -->
+    <p-dropdown
+    styleClass="w-full"
+    [options]="categoriesDatas"
+    [(ngModel)]="selectedCategory"
+    optionLabel=" nomeProjeto"
+    optionValue="id"
+    placeholder="Selecione uma categoria"
+    formControlName="id">
+    </p-dropdown>
+    <!-- tecnico -->
+    <input pInputText placeholder="tecnico" formControlName="tecnico" />
+    <!-- cliente -->
+    <input pInputText placeholder="cliente" formControlName="cliente" />
+    <!-- data de abertura -->
+    <input pInputText placeholder="dataAbertura" formControlName="dataAbertura" /> 
+<!-- Data de fechamento -->
+    <input pInputText placeholder="dataFechamento" formControlName="dataFechamento" />
+    <!-- Data Prevista -->
+    <input pInputText placeholder="dataPrevista" formControlName="dataPrevista" />
+    <!-- status -->
+    <input pInputText placeholder="status" formControlName="status" />
+
+    <div class="flex flex-row justify-content-center align-content-center align-items-center m-1">
+      <p-button
+      [disabled]="!addProjectForm.valid"
+      type="submit"
+      label="Concluir"
+      ></p-button>
+    </div>
+  </div>
+</form>
+</div>
+
+<!-- FORMULÁRIO DE EDITAR PROJETO -->
+<div *ngIf="projectAction?.event?.action === editProjectAction">
+  <form [formGroup]="editProjectForm" (ngSubmit)="handleSubmitEditProject()">
+    <div class="card flex flex-column md:flex-column gap-3">
+      <input pInputText placeholder="nomeProjeto" formControlName="nomeProjeto" />
+      <input pInputText placeholder="nome" formControlName="nome" />
+      <input pInputText placeholder="email" formControlName="email" />
+      <input pInputText placeholder="cnpj" formControlName="cnpj"/>
+      <input pInputText placeholder="razaoSocial" formControlName="razaoSocial"/>
+      <input pInputText placeholder="endereco" formControlName="endereco"/>
+      <input pInputText placeholder="quantidadeDeProjetos" formControlName="quantidadeDeProjetos"/>
+      <input pInputText placeholder="quantidadeDePessoas" formControlName="quantidadeDePessoas"/>
+      <input pInputText placeholder="dataAbertura" formControlName="dataAbertura"/>
+      <input pInputText placeholder="dataFechamento" formControlName="dataFechamento"/>
+      <input pInputText placeholder="dataPrevista" formControlName="dataPrevista"/>
+      <input pInputText placeholder="ativo" formControlName="ativo"/>
+      <input pInputText placeholder="status" formControlName="status"/>
+      
+      <div
+      class="flex flex-row justify-content-center align-content-center align-items-center"
+    >
+      <p-button
+        [disabled]="!editProjectForm.valid"
+        type="submit"
+        label="Concluir"
+      ></p-button>
+    </div>
+  </div>
+  </form>
+
+</div>

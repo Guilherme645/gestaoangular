@@ -1,1 +1,29 @@
 <app-toolbar-navigation></app-toolbar-navigation>
+
+<div class="grid">
+    <div class="col-12">
+       <!-- grafico de projetos -->
+       <p-card
+       header="PROJETOS"
+       styleClass="shadow-3 m-5 text-indigo-800"
+       >
+       <p-chart
+        type="bar" 
+       [data]="projectsChartDatas" 
+       [options]="projectsChartOptions"
+       ></p-chart>
+       </p-card>
+
+       <!-- grafico de clientes -->
+       <p-card
+       header="CLIENTES"
+       styleClass="shadow-3 m-5 text-indigo-800"
+       >
+       <p-chart
+        type="bar" 
+       [data]="clientsChartDatas" 
+       [options]="clientsChartOptions"
+       ></p-chart>
+       </p-card>
+    </div>   
+   </div>

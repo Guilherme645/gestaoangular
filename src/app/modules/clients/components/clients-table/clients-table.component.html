@@ -1,0 +1,136 @@
+<div class="grid">
+  <div class="col-12">
+    <p-card
+      styleClass="shadow-3 m-5 text-indigo-800"
+      header="Clientes"
+    >
+      <p-table
+        #projectsTable
+        [value]="clients"
+        [rows]="10"
+        [paginator]="true"
+        [responsive]="true"
+        [globalFilterFields]="['name', 'amount']"
+        [tableStyle]="{ 'min-width': '75rem' }"
+        [(selection)]="clientSelected"
+        [rowHover]="true"
+        [showCurrentPageReport]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} clientes"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="nome">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Nome
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="nome"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="nome"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="razaoSocial">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Razão Social
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="razaoSocial"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="razaoSocial"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th pSortableColumn="endereco">
+              <div class="flex justify-content-between align-items-center">
+                <div class="flex justify-content-between align-items-center">
+                  Endereço
+                </div>
+                <div class="flex justify-content-between align-items-center">
+                  <p-sortIcon field="endereco"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="endereco"
+                    display="menu"
+                    matchMode="contains"
+                    [showMatchModes]="false"
+                    [showOperator]="false"
+                    [showAddButton]="false"
+                  ></p-columnFilter>
+                </div>
+              </div>
+            </th>
+
+            <th>
+              <div class="flex justify-content-center">
+                <p-button
+                  styleClass="p-button-info"
+                  icon="pi pi-plus"
+                  label="Adicionar"
+                  pTooltip="Adicionar cliente"
+                  tooltipPosition="top"
+                  (onClick)="handleClientEvent(addClientEvent)"
+                ></p-button>
+              </div>
+            </th>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-client>
+          <tr>
+            <td>{{ client?.nome }}</td>
+            <td>{{ client?.razaoSocial }}</td>
+            <td>{{ client?.endereco }}</td>
+            <td [pTooltip]="client?.razaoSocial" tooltipPosition="top">
+              {{ client?.description }}
+            </td>
+            <td>{{ client?.endereco?.endereco }}</td>
+            <td>
+              <div
+                class="flex justify-content-center gap-3 align-content-center align-items-center"
+              >
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-warning"
+                  pTooltip="Editar cliente"
+                  tooltipPosition="top"
+                  (onClick)="handleClientEvent(editClientEvent, client?.id)"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-danger"
+                  pTooltip="Remover cliente"
+                  tooltipPosition="top"
+                  (click)="handleClientEvent(client?.id, client?.nome)"
+                ></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-card>
+  </div>
+</div>
