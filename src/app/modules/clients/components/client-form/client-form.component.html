@@ -3,25 +3,23 @@
     <form [formGroup]="addClientForm" (ngSubmit)="handleSubmitAddClient()">
       <div class="card flex flex-column md:flex-column gap-3">
         <!-- Nome do produto -->
-        <input pInputText placeholder="Nome" formControlName="name" />
-        <!-- Categoria do produto -->
-        <p-dropdown
-          styleClass="w-full"
-          [options]="categoriesDatas"
-          [(ngModel)]="selectedCategory"
-          optionLabel="nome"
-          optionValue="id"
-          placeholder="Selecione uma categoria"
-          formControlName="category_id"
-        ></p-dropdown>
+        <input pInputText placeholder="Nome" formControlName="nome" />
+        <input pInputText placeholder="cnpj" formControlName="cnpj" />
         <!-- Razão Social -->
-        <input pInputText placeholder="razaoSocial" formControlName="razaoSocial" />
+        <input pInputText placeholder="Razao Social" formControlName="razaoSocial" />
         <!-- Descrição do produto -->
-        <input pInputText placeholder="endereco" formControlName="endereco" />
+        <input pInputText placeholder="Endereco" formControlName="endereco" />
         <!-- Quantidade do projetos -->
-        <input pInputText placeholder="quantidadeDeProjetos" formControlName="quantidadeDeProjetos" />
+        <input pInputText placeholder="Quantidade De Projetos" formControlName="quantidadeProjetos" />
  <!-- Quantidade do pessoas -->
-        <input pInputText placeholder="quantidadeDePessoas" formControlName="quantidadeDePessoas" />
+        <input pInputText placeholder="Quantidade De Pessoas" formControlName="quantidadePessoas" />
+
+        <input pInputText placeholder="uf" formControlName="uf" />
+
+        <input pInputText placeholder="cep" formControlName="cep" />
+
+        <input pInputText placeholder="cidade" formControlName="cidade" />
+
 
   
         <div class="flex flex-row justify-content-center align-content-center align-items-center m-1">

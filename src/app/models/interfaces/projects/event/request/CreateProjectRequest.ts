@@ -1,15 +1,13 @@
 export interface CreateProjectRequest {
-     id: string,
-    nome: string,
-    cnpj: string,
-    email: string,
-    razaoSocial: string,
-    endereco: string,
-    quantidadeDeProjetos: string,
-    quantidadeDePessoas: string,
-    ativo: string,
-    dataAbertura: string,
-    dataFechamento: string,
-    dataPrevista: string,
-    status: string,
+    nomeProjeto: string;
+    tecnico: {
+        id: number;
+    };
+    cliente: {
+        id: number;
+    };
+    dataAbertura: string;
+    dataFechamento: string;
+    dataPrevista: string;
+    status: string;
 }

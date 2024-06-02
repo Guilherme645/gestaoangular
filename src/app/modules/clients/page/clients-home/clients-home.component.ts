@@ -47,9 +47,9 @@ export class ClientsHomeComponent implements OnInit, OnDestroy {
       .getAllClients()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (response) => {
-          if (response.length > 0) {
-            this.clientsDatas = response;
+        next: (response: any) => {
+          if (response.content.length > 0) {
+            this.clientsDatas = response.content;
           }
         },
         error: (err) => {
@@ -60,7 +60,7 @@ export class ClientsHomeComponent implements OnInit, OnDestroy {
             detail: 'Erro ao buscar clientes',
             life: 2500,
           });
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
         },
       });
   }

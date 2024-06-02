@@ -33,13 +33,15 @@ export class ClientFormComponent implements OnInit, OnDestroy {
 
   // adicionar clientes
   public addClientForm = this.formBuilder.group({
-    id:['', Validators.required],
     nome:['', Validators.required],
     cnpj:['', Validators.required],
     razaoSocial: ['', Validators.required],
     endereco: ['', Validators.required],
-        quantidadeDeProjetos: ['', Validators.required],
+        quantidadeProjetos: ['', Validators.required],
         quantidadePessoas: ['', Validators.required], 
+        uf: ['', Validators.required],
+        cep: ['', Validators.required],
+        cidade: ['', Validators.required],
   });
 
   // editar clientes 
@@ -103,9 +105,11 @@ export class ClientFormComponent implements OnInit, OnDestroy {
         cnpj: this.addClientForm.value.cnpj as string,
         razaoSocial: this.addClientForm.value.razaoSocial as string,
         endereco: this.addClientForm.value.endereco as string,
-        quantidadeDeProjetos: this.addClientForm.value.quantidadeDeProjetos as string,
-        quantidadeDePessoas: this.addClientForm.value.quantidadePessoas as string,
-        id: this.addClientForm.value.id as string,
+        quantidadeProjetos: Number(this.addClientForm.value.quantidadeProjetos) ,
+        quantidadePessoas: Number(this.addClientForm.value.quantidadePessoas)  ,
+        uf: this.addClientForm.value.uf as string,
+        cep: this.addClientForm.value.cep as string,
+        cidade: this.addClientForm.value. cidade as string,
       };
       this.clientsService
       .createClient(requestCreateClient)
@@ -204,9 +208,9 @@ export class ClientFormComponent implements OnInit, OnDestroy {
       .getAllClients()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (response) => {
-          if (response.length > 0) {
-            this.clientsDatas = response;
+        next: (response: any) => {
+          if (response.content.length > 0) {
+            this.clientsDatas = response.content;
             this.clientsDatas &&
               this.clientsDtService.setClientsDatas(this.clientsDatas);
           }

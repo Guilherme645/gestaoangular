@@ -22,44 +22,52 @@ export class ClientsService {
     }),
   };
 
-  constructor(private http: HttpClient, private cookie: CookieService) {}
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   getAllClients(): Observable<Array<GetAllClientsResponse>> {
     return this.http
       .get<Array<GetAllClientsResponse>>(
-        `${this.API_URL}/projetos`,
+        `${this.API_URL}/clientes`,
         this.httpOptions
       )
-      .pipe(map((client) => client.filter((data) => data?.amount > 0)));
   }
 
-  deleteClient(client_id: string): Observable<DeleteClientResponse>{
-  return this.http.delete<DeleteClientResponse>(
-    `${this.API_URL}/clientes/1`,
-    {
-      ...this.httpOptions,
-       params: {
-        client_id: client_id,
-       }
-    }
-  )
-}
+  deleteClient(client_id: string): Observable<DeleteClientResponse> {
+    return this.http.delete<DeleteClientResponse>(
+      `${this.API_URL}/clientes/${client_id}`,
+      {
+        ...this.httpOptions,
+      }
+    );
+  }
 
-createClient(
-  requestDatas: CreateClientRequest
-): Observable<CreateClientResponse> {
-  return this.http.post<CreateClientResponse>(
-    `${this.API_URL}/clientes`,
-    requestDatas,
-    this.httpOptions
-  );
-}
-editClient(requestDatas: EditClientRequest): Observable<void> {
-  return this.http.put<void>(
-    `${this.API_URL}/clientes`,
-    requestDatas,
-    this.httpOptions
-  );
-}
+  createClient(
+    requestDatas: CreateClientRequest
+  ): Observable<CreateClientResponse> {
+    return this.http.post<CreateClientResponse>(
+      `${this.API_URL}/clientes`,
+      {
+        cep: requestDatas.cep,
+        cidade: requestDatas.cidade,
+        nome: requestDatas.nome,
+        uf: requestDatas.uf,
+        cnpj: requestDatas.cnpj,
+        razaoSocial: requestDatas.razaoSocial,
+        quantidadePessoas:Number (requestDatas.quantidadePessoas),
+        quantidadeProjetos: Number(requestDatas.quantidadeProjetos),
+        endereco: requestDatas.endereco
+
+      } as CreateClientRequest
+      ,
+      this.httpOptions
+    );
+  }
+  editClient(requestDatas: EditClientRequest): Observable<void> {
+    return this.http.put<void>(
+      `${this.API_URL}/clientes`,
+      requestDatas,
+      this.httpOptions
+    );
+  }
 }
 

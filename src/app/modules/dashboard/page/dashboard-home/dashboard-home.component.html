@@ -7,11 +7,7 @@
        header="PROJETOS"
        styleClass="shadow-3 m-5 text-indigo-800"
        >
-       <p-chart
-        type="bar" 
-       [data]="projectsChartDatas" 
-       [options]="projectsChartOptions"
-       ></p-chart>
+      <p>{{projectsList.length}}</p>
        </p-card>
 
        <!-- grafico de clientes -->
@@ -19,11 +15,7 @@
        header="CLIENTES"
        styleClass="shadow-3 m-5 text-indigo-800"
        >
-       <p-chart
-        type="bar" 
-       [data]="clientsChartDatas" 
-       [options]="clientsChartOptions"
-       ></p-chart>
+       <p>{{clientsList.length}}</p>
        </p-card>
     </div>   
    </div>

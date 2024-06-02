@@ -22,6 +22,7 @@ export class ClientsTableComponent {
   handleClientEvent(action: string, id?: string): void{
     if(action && action !== ''){
       const ClientEventData = id && id !== ''? {action,id} : {action};
+      this.clientEvent.emit(ClientEventData)
       // EMITIR VALOR DO EVENTO
     }
   }

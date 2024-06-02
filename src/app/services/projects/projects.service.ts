@@ -30,17 +30,14 @@ export class ProjectsService {
         `${this.API_URL}/projetos`,
         this.httpOptions
       )
-      .pipe(map((project) => project.filter((data) => data?.amount > 0)));
-  }
+
+    }
 
   deleteProject(project_id: string): Observable<DeleteProjectResponse> {
     return this.http.delete<DeleteProjectResponse>(
-      `${this.API_URL}/projetos/2`,
+      `${this.API_URL}/projetos/${project_id}`,
       {
         ...this.httpOptions,
-         params: {
-          project_id: project_id,
-         },
       }
     );
   }

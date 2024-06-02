@@ -21,10 +21,14 @@ export class ProjectsTableComponent {
   handleProjectEvent(action: string, id?: string): void{
     if(action && action !== ''){
       const ProjectEventData = id && id !== ''? {action,id} : {action};
-      // EMITIR VALOR DO EVENTO
-    }
+      this.projectEvent.emit(ProjectEventData);    }
   }
   handleDeleteProject(project_id: string, nome: string): void{
-    if(project_id !== '' && nome !== ''){}
+    if(project_id !== '' && nome !== ''){
+      this.deleteProjectEvent.emit({
+        project_id,
+        nome,
+      });
+    }
   }
 }

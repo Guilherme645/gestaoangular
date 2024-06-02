@@ -156,6 +156,7 @@
                     [showOperator]="false"
                     [showAddButton]="false"
                   ></p-columnFilter>
+                  
                 </div>
               </div>
             </th>
@@ -207,7 +208,7 @@
                   class="p-button-rounded p-button-danger"
                   pTooltip="Remover editar projeto"
                   tooltipPosition="top"
-                  (click)="handleDeleteProject(project?.id, project?.nome)"
+                  (click)="handleDeleteProject(project?.id, project?.nomeProjeto)"
                 ></button>
               </div>
             </td>

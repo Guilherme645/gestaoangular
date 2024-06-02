@@ -9,11 +9,11 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-private API_URL = environment.API_URL;
+  private API_URL = environment.API_URL;
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-authUser(requestDatas: AuthRequest): Observable<AuthResponse>{
-  return this.http.post<AuthResponse>(`${this.API_URL}/auth/login`, requestDatas);
-}
+  authUser(requestDatas: AuthRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.API_URL}/auth/login`, { login: requestDatas.login, senha: requestDatas.senha, });
+  }
 }

@@ -1,5 +1,5 @@
 export interface GetAllProjectsResponse {
-  id: string;  
+  id: string;
   email: string;
   cnpj: string;
   razaoSocial: string;
@@ -9,11 +9,11 @@ export interface GetAllProjectsResponse {
   ativo: string;
   nome: string;
   amount: number;
-    nomeProjeto: string;
-    tecnico: string;
-    cliente: string;
-    dataAbertura: string;
-    dataFechamento: "-";
-    dataPrevista: "-";
-    status: string;
-  }
+  nomeProjeto: string;
+  tecnico: string;
+  cliente: string;
+  dataAbertura: string;
+  dataFechamento: "-";
+  dataPrevista: "-";
+  status: string;
+}

@@ -33,16 +33,11 @@ export class ProjectFormComponent implements OnInit, OnDestroy {
 
   // ADICONAR PROJETO
   public addProjectForm = this.formBuilder.group({
-    id:['', Validators.required],
-    nome:['', Validators.required],
-    cnpj: ['', Validators.required],
-        email: ['', Validators.required],
-        razaoSocial: ['', Validators.required],
-        endereco:['', Validators.required] ,
-        quantidadeDeProjetos: ['', Validators.required],
-        quantidadeDePessoas: ['', Validators.required],
-        ativo: ['', Validators.required],
-    dataAbertura: ['', Validators.required],
+    // id:['', Validators.required],
+    nomeProjeto:['', Validators.required],
+    tecnico: ['1', Validators.required],
+    cliente: ['1', Validators.required],
+          dataAbertura: ['', Validators.required],
     dataFechamento: ['', Validators.required],
     dataPrevista: ['', Validators.required],
     status: ['', Validators.required],
@@ -109,19 +104,17 @@ this.getAllCategories();
   handleSubmitAddProject(): void {
     if (this.addProjectForm?.value && this.addProjectForm?.valid) {
       const requestCreateProject: CreateProjectRequest = {
-        nome: this.addProjectForm.value.nome as string,
-        cnpj: this.addProjectForm.value.cnpj as string,
-        email: this.addProjectForm.value.email as string,
-        razaoSocial: this.addProjectForm.value.razaoSocial as string,
-        endereco: this.addProjectForm.value.endereco as string,
-        quantidadeDeProjetos: this.addProjectForm.value.quantidadeDeProjetos as string,
-        quantidadeDePessoas: this.addProjectForm.value.quantidadeDePessoas as string,
-        ativo: this.addProjectForm.value.ativo as string,
+        nomeProjeto: this.addProjectForm.value.nomeProjeto as string,
+        tecnico:{
+          id: Number (this.addProjectForm.value.tecnico)
+        },
+        cliente:{
+          id: Number (this.addProjectForm.value.tecnico)
+        },
         dataAbertura: this.addProjectForm.value.dataAbertura as string,
         dataFechamento: this.addProjectForm.value.dataFechamento as string,
         dataPrevista: this.addProjectForm.value.dataPrevista as string,
         status: this.addProjectForm.value.status as string,
-        id: this.addProjectForm.value.status as string
       };
 
       this.projectsService

@@ -42,9 +42,10 @@ export class DashboardHomeComponent implements OnInit, OnDestroy {
 
   getClientsDatas(): void {
     this.clientsService.getAllClients().subscribe({
-      next: (response: GetAllClientsResponse[]) => {
-        if (response.length > 0) {
-          this.clientsList = response;
+      next: (response: any) => {
+        console.log ('teste')
+        if (response.content.length > 0) {
+          this.clientsList = response.content;
           this.clientsDtService.setClientsDatas(this.clientsList);
           this.setClientsChartConfig();
 
@@ -120,9 +121,10 @@ export class DashboardHomeComponent implements OnInit, OnDestroy {
 }
   getProjectsDatas(): void {
     this.projectsService.getAllProjects().subscribe({
-      next: (response: GetAllProjectsResponse[]) => {
-        if (response.length > 0) {
-          this.projectsList = response;
+      next: (response: any) => {
+        console.log (response)
+        if (response.content.length > 0) {
+          this.projectsList = response.content;
         this.projectsDtService.setProjectsDatas(this.projectsList);
         this.setProjectsChartConfig();
 }

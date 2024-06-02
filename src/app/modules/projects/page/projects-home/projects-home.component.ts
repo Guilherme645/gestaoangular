@@ -27,7 +27,7 @@ export class ProjectsHomeComponent implements OnInit, OnDestroy {
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
     private dialogService: DialogService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getServiceProjectsDatas();
@@ -47,9 +47,9 @@ export class ProjectsHomeComponent implements OnInit, OnDestroy {
       .getAllProjects()
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (response) => {
-          if (response.length > 0) {
-            this.projectsDatas = response;
+        next: (response: any) => {
+          if (response.content.length > 0) {
+            this.projectsDatas = response.content;
           }
         },
         error: (err) => {
@@ -60,7 +60,7 @@ export class ProjectsHomeComponent implements OnInit, OnDestroy {
             detail: 'Erro ao buscar produtos',
             life: 2500,
           });
-          // this.router.navigate(['/dashboard']);
+          this.router.navigate(['/dashboard']);
         },
       });
   }
@@ -84,49 +84,52 @@ export class ProjectsHomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  handleDeleteProjectAction(event:{
-  project_id: string;
+  handleDeleteProjectAction(event: {
+    project_id: string;
     nome: string;
-  }): void{
-    if(event){
-this.confirmationService.confirm({
-  message: `Confirma a exlusão do projeto: ${event?.nome}?`,
-  header: 'Confirmação de exclusão',
-  icon: 'pi pi-ExclamationTriangle',
-  acceptLabel: 'Sim',
-  rejectLabel: 'Não',
-  accept: () => this.deleteProject(event?.project_id),
-})    }
+  }): void {
+    console.log (event)
+    if (event) {
+      this.confirmationService.confirm({
+        message: `Confirma a exlusão do projeto: ${event?.nome}?`,
+        header: 'Confirmação de exclusão',
+        icon: 'pi pi-ExclamationTriangle',
+        acceptLabel: 'Sim',
+        rejectLabel: 'Não',
+        accept: () => this.deleteProject(event?.project_id),
+      })
+    }
   }
 
   deleteProject(project_id: string) {
-if(project_id) {
-  this.projectsService 
-  .deleteProject(project_id)
-  .pipe(takeUntil(this.destroy$))
-  .subscribe({ 
-    next: (response) => {
-      if(response) {
-        this.messageService.add({
-          severity: 'sucess',
-          summary: 'Sucesso',
-          detail: 'Produto removido com sucesso!',
-          life: 2500,
+    if (project_id) {
+      this.projectsService
+        .deleteProject(project_id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe({
+          next: (response) => {
+            if (response) {
+              this.messageService.add({
+                severity: 'sucess',
+                summary: 'Sucesso',
+                detail: 'Produto removido com sucesso!',
+                life: 2500,
+              });
+
+              this.getAPIProjectsDatas();
+            }
+          },
+          error: (err) => {
+            console.log(err);
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Erro',
+              detail: 'Erro ao remover projeto'
+            });
+          },
         });
-  
-        this.getAPIProjectsDatas();
-      }
-    },
-    error: (err) => {
-      console.log(err);
-      this.messageService.add({
-        severity: 'error',
-        summary: 'Erro',
-        detail: 'Erro ao remover projeto'
-      });
-    },
-  });
-}  }
+    }
+  }
 
   ngOnDestroy(): void {
     this.destroy$.next();
