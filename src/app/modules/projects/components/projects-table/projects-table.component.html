@@ -1,23 +1,19 @@
 <div class="grid">
   <div class="col-12">
-    <p-card
-      styleClass="shadow-3 m-5 text-indigo-800"
-      header="Projetos"
-    >
-      <p-table
-        #projectsTable
-        [value]="projects"
-        [rows]="10"
-        [paginator]="true"
-        [responsive]="true"
-        [globalFilterFields]="['nomeProjeto', 'tecnico']"
+    <p-card styleClass="shadow-3 m-5 text-indigo-800" 
+    header="Projetos">
+      <p-table #projectsTable [value]="projects"
+       [rows]="10" 
+       [paginator]="true" 
+       [responsive]="true"
+        [globalFilterFields]="['nomeProjeto', 'tecnico']" 
         [tableStyle]="{ 'min-width': '75rem' }"
-        [(selection)]="projectSelected"
+        [(selection)]="projectSelected" 
         [rowHover]="true"
-        [showCurrentPageReport]="true"
+         [showCurrentPageReport]="true" 
         dataKey="id"
-        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} projetos"
-      >
+        currentPageReportTemplate="Mostrando {first} de {last} de {totalRecords} projetos">
+       
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="nomeProjeto">
@@ -27,15 +23,14 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="nomeProjeto"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field="nomeProjeto"
-                    display="menu"
-                    matchMode="contains"
-                    [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                  <p-columnFilter 
+                  type="text" 
+                  field="nomeProjeto" 
+                  display="menu" 
+                  matchMode="contains"
+                    [showMatchModes]="false" 
+                    [showOperator]="false" 
+                    [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
             </th>
@@ -47,15 +42,13 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="tecnico"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field="tecnico"
-                    display="menu"
-                    matchMode="contains"
-                    [showMatchModes]="false"
+                  <p-columnFilter type="text" 
+                  field="tecnico"
+                   display="menu" 
+                   matchMode="contains"
+                    [showMatchModes]="false" 
                     [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                     [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
             </th>
@@ -67,15 +60,14 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="cliente"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field="cliente"
-                    display="menu"
-                    matchMode="contains"
+                  <p-columnFilter 
+                  type="text" 
+                  field="cliente" 
+                  display="menu" 
+                  matchMode="contains"
                     [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                     [showOperator]="false" 
+                     [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
             </th>
@@ -87,15 +79,13 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="dataAbertura"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field="dataAbertura"
-                    display="menu"
-                    matchMode="contains"
-                    [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                  <p-columnFilter type="text" 
+                  field="dataAbertura" 
+                  display="menu" 
+                  matchMode="contains"
+                    [showMatchModes]="false" 
+                    [showOperator]="false" 
+                    [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
 
@@ -107,15 +97,14 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field=" dataFechamento"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field=" dataFechamento"
-                    display="menu"
-                    matchMode="contains"
+                  <p-columnFilter 
+                  type="text" 
+                  field=" dataFechamento" 
+                  display="menu" 
+                  matchMode="contains"
                     [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                     [showOperator]="false" 
+                     [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
             </th>
@@ -127,15 +116,13 @@
                 </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="dataPrevista"></p-sortIcon>
-                  <p-columnFilter
-                    type="text"
-                    field="dataPrevista"
-                    display="menu"
-                    matchMode="contains"
+                  <p-columnFilter type="text"
+                   field="dataPrevista" 
+                   display="menu" 
+                   matchMode="contains"
                     [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
+                     [showOperator]="false" 
+                     [showAddButton]="false"></p-columnFilter>
                 </div>
               </div>
             </th>
@@ -144,35 +131,29 @@
               <div class="flex justify-content-between align-items-center">
                 <div class="flex justify-content-between align-items-center">
                   Status
-                                </div>
+                </div>
                 <div class="flex justify-content-between align-items-center">
                   <p-sortIcon field="status"></p-sortIcon>
                   <p-columnFilter
-                    type="text"
-                    field="status"
-                    display="menu"
-                    matchMode="contains"
-                    [showMatchModes]="false"
-                    [showOperator]="false"
-                    [showAddButton]="false"
-                  ></p-columnFilter>
-                  
+                   type="text" 
+                  field="status" 
+                  display="menu"
+                   matchMode="contains"
+                    [showMatchModes]="false" 
+                    [showOperator]="false" [showAddButton]="false"></p-columnFilter>
+
                 </div>
               </div>
             </th>
 
-            <th>
-              <div class="flex justify-content-center">
-                <p-button
-                  styleClass="p-button-info"
-                  icon="pi pi-plus"
-                  label="Adicionar"
-                  pTooltip="Adicionar projeto"
-                  tooltipPosition="top"
-                  (onClick)="handleProjectEvent(addProjectEvent)"
-                ></p-button>
-              </div>
-            </th>
+            <p-button
+            styleClass="p-button-info"
+            icon="pi pi-plus"
+            label="Adicionar"
+            pTooltip="Adicionar Projeto"
+            tooltipPosition="top"
+            (onClick)="handleProjectEvent(addProjectEvent)"
+          ></p-button>
           </tr>
         </ng-template>
 
@@ -189,28 +170,24 @@
             </td>
             <td>{{ project?. status?.status}}</td>
             <td>
-              <div
-                class="flex justify-content-center gap-3 align-content-center align-items-center"
-              >
-                <button
-                  pButton
-                  pRipple
-                  icon="pi pi-pencil"
-                  class="p-button-rounded p-button-warning"
-                  pTooltip="Editar projeto"
+              <div class="flex justify-content-center gap-3 align-content-center align-items-center">
+
+                <button pButton pRipple icon="pi pi-trash"
+                 class="p-button-rounded p-button-danger"
+                  pTooltip="Remover Projeto" 
                   tooltipPosition="top"
-                  (onClick)="handleProjectEvent(editProjectEvent, project?.id)"
-                ></button>
-                <button
-                  pButton
-                  pRipple
-                  icon="pi pi-trash"
-                  class="p-button-rounded p-button-danger"
-                  pTooltip="Remover editar projeto"
-                  tooltipPosition="top"
-                  (click)="handleDeleteProject(project?.id, project?.nomeProjeto)"
-                ></button>
+                  (click)="handleDeleteProject(project?.id, project?.nomeProjeto)"></button>
               </div>
+            </td>
+            <td>
+
+              <button pButton pRipple icon="pi pi-pencil"
+               class="p-button-rounded p-button-warning"
+                pTooltip="Editar Projeto"
+                 tooltipPosition="top"
+                (click)="handleEditProject(project?.id)"></button>
+
+
             </td>
           </tr>
         </ng-template>

@@ -59,6 +59,7 @@ export class ProjectFormComponent implements OnInit, OnDestroy {
     dataFechamento: ['', Validators.required],
     dataPrevista: ['', Validators.required],
     status: ['', Validators.required],
+    
   });
 
   public addProjectAction = ProjectEvent.ADD_PROJECT_EVENT;
@@ -145,12 +146,15 @@ this.getAllCategories();
     this.addProjectForm.reset();
   }
   
-  handleSubmitEditProject(): void {
+  handleSubmitEditProject():
+    // Extrai os valores e a validade do formulário de edição de projeto
+ void {
      if (this.editProjectForm.value && 
       this.editProjectForm.valid &&
     this.projectAction.event.id
-  ) {
-      
+  )  // Verifica se os valores do formulário existem, se o formulário é válido e se há um ID de evento
+  {
+          // Cria o objeto de solicitação para editar o projeto com os valores do formulário
        const requestEditProject: EditProjectRequest = {
          nomeProjeto: this.editProjectForm.value.nomeProjeto as string,
          nome: this.editProjectForm.value.nome as string,

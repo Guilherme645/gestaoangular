@@ -18,6 +18,7 @@ export class ClientsTableComponent {
   public clientSelected!: GetAllClientsResponse;
   public addClientEvent = ClientEvent.ADD_CLIENT_EVENT;
   public editClientEvent = ClientEvent.EDIT_CLIENT_EVENT;
+clientAction: any;
 
   handleClientEvent(action: string, id?: string): void{
     if(action && action !== ''){
@@ -25,6 +26,13 @@ export class ClientsTableComponent {
       this.clientEvent.emit(ClientEventData)
       // EMITIR VALOR DO EVENTO
     }
+  }
+  handleEditClient(id: string) {
+    // this.handleProjectEvent(this.editProjectEvent, id);
+    this.clientEvent.emit({
+      action: this.editClientEvent,
+      id,
+    });
   }
   handleDeleteClient(client_id: string, nome: string): void{
     if(client_id !== '' && nome !== ''){

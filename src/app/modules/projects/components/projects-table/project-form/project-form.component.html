@@ -6,17 +6,17 @@
     <!-- categoria do projeto -->
     
     <!-- tecnico -->
-    <input pInputText placeholder="tecnico" formControlName="tecnico" />
+    <input pInputText placeholder="Tecnico" formControlName="tecnico" />
     <!-- cliente -->
-    <input pInputText placeholder="cliente" formControlName="cliente" />
+    <input pInputText placeholder="Cliente" formControlName="cliente" />
     <!-- data de abertura -->
-    <input pInputText placeholder="dataAbertura" formControlName="dataAbertura" /> 
+    <input pInputText placeholder="Data de Abertura" formControlName="dataAbertura" /> 
 <!-- Data de fechamento -->
-    <input pInputText placeholder="dataFechamento" formControlName="dataFechamento" />
+    <input pInputText placeholder="Data de Fechamento" formControlName="dataFechamento" />
     <!-- Data Prevista -->
-    <input pInputText placeholder="dataPrevista" formControlName="dataPrevista" />
+    <input pInputText placeholder="Data Prevista" formControlName="dataPrevista" />
     <!-- status -->
-    <input pInputText placeholder="status" formControlName="status" />
+    <input pInputText placeholder="Status" formControlName="status" />
 
     <div class="flex flex-row justify-content-center align-content-center align-items-center m-1">
       <p-button
@@ -33,19 +33,20 @@
 <div *ngIf="projectAction?.event?.action === editProjectAction">
   <form [formGroup]="editProjectForm" (ngSubmit)="handleSubmitEditProject()">
     <div class="card flex flex-column md:flex-column gap-3">
-      <input pInputText placeholder="nomeProjeto" formControlName="nomeProjeto" />
-      <input pInputText placeholder="nome" formControlName="nome" />
-      <input pInputText placeholder="email" formControlName="email" />
-      <input pInputText placeholder="cnpj" formControlName="cnpj"/>
-      <input pInputText placeholder="razaoSocial" formControlName="razaoSocial"/>
-      <input pInputText placeholder="endereco" formControlName="endereco"/>
-      <input pInputText placeholder="quantidadeDeProjetos" formControlName="quantidadeDeProjetos"/>
-      <input pInputText placeholder="quantidadeDePessoas" formControlName="quantidadeDePessoas"/>
-      <input pInputText placeholder="dataAbertura" formControlName="dataAbertura"/>
-      <input pInputText placeholder="dataFechamento" formControlName="dataFechamento"/>
-      <input pInputText placeholder="dataPrevista" formControlName="dataPrevista"/>
-      <input pInputText placeholder="ativo" formControlName="ativo"/>
-      <input pInputText placeholder="status" formControlName="status"/>
+      <input pInputText placeholder="Id" formControlName="id" />
+      <input pInputText placeholder="Nome do Projeto" formControlName="nomeProjeto" />
+      <input pInputText placeholder="Nome" formControlName="nome" />
+      <input pInputText placeholder="Email" formControlName="email" />
+      <input pInputText placeholder="Cnpj" formControlName="cnpj"/>
+      <input pInputText placeholder="Razão Social" formControlName="razaoSocial"/>
+      <input pInputText placeholder="Endereco" formControlName="endereco"/>
+      <input pInputText placeholder="Quantidade De Projetos" formControlName="quantidadeDeProjetos"/>
+      <input pInputText placeholder="Quantidade De Pessoas" formControlName="quantidadeDePessoas"/>
+      <input pInputText placeholder="Data de Abertura" formControlName="dataAbertura"/>
+      <input pInputText placeholder="Data de Fechamento" formControlName="dataFechamento"/>
+      <input pInputText placeholder="Data Prevista" formControlName="dataPrevista"/>
+      <input pInputText placeholder="Ativo" formControlName="ativo"/>
+      <input pInputText placeholder="Status" formControlName="status"/>
       
       <div
       class="flex flex-row justify-content-center align-content-center align-items-center"

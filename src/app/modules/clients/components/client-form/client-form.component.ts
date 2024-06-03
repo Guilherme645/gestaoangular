@@ -120,7 +120,7 @@ export class ClientFormComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'success',
               summary: 'Sucesso',
-              detail: 'Produto criado com sucesso!',
+              detail: 'Cliente criado com sucesso!',
               life: 2500,
             });
           }
@@ -130,7 +130,7 @@ export class ClientFormComponent implements OnInit, OnDestroy {
           this.messageService.add({
             severity: 'error',
             summary: 'Erro',
-            detail: 'Erro ao criar produto!',
+            detail: 'Erro ao criar cliente!',
             life: 2500,
           });
         },
@@ -162,7 +162,7 @@ export class ClientFormComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'success',
               summary: 'Sucesso',
-              detail: 'Produto editado com sucesso!',
+              detail: 'Cliente editado com sucesso!',
               life: 2500,
             });
             this.editClientForm.reset();
@@ -172,7 +172,7 @@ export class ClientFormComponent implements OnInit, OnDestroy {
             this.messageService.add({
               severity: 'error',
               summary: 'Erro',
-              detail: 'Erro ao editar produto!',
+              detail: 'Erro ao editar cliente!',
               life: 2500,
             });
             this.editClientForm.reset();

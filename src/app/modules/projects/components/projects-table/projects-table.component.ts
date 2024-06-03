@@ -18,13 +18,25 @@ export class ProjectsTableComponent {
   public addProjectEvent = ProjectEvent.ADD_PROJECT_EVENT;
   public editProjectEvent = ProjectEvent.EDIT_PROJECT_EVENT;
 
-  handleProjectEvent(action: string, id?: string): void{
-    if(action && action !== ''){
-      const ProjectEventData = id && id !== ''? {action,id} : {action};
-      this.projectEvent.emit(ProjectEventData);    }
+  handleProjectEvent(action: string, id?: string): void {
+    console.log('HELLO');
+    console.log(action, id);
+    if (action && action !== '') {
+      const ProjectEventData = id && id !== '' ? { action, id } : { action };
+      this.projectEvent.emit(ProjectEventData);
+    }
   }
-  handleDeleteProject(project_id: string, nome: string): void{
-    if(project_id !== '' && nome !== ''){
+
+  handleEditProject(id: string) {
+    // this.handleProjectEvent(this.editProjectEvent, id);
+    this.projectEvent.emit({
+      action: this.editProjectEvent,
+      id,
+    });
+  }
+
+  handleDeleteProject(project_id: string, nome: string): void {
+    if (project_id !== '' && nome !== '') {
       this.deleteProjectEvent.emit({
         project_id,
         nome,
